@@ -8,6 +8,8 @@ class log(apie.Endpoint):
         super().__init__(name)
 
         this.supportedMethods = ['PUT']
+        this.mime = 'plain/text'
+        this.clobberContent = False
 
         this.requiredKWArgs.append('message')
         this.requiredKWArgs.append('level')
@@ -21,5 +23,5 @@ Add a log message to the log aggregator.
 '''
 
     def Call(this):
-        this.result.status = 200
-        this.result.message = "OK"
+        this.response.code = 200
+        this.response.content.string = "OK"
